@@ -11,11 +11,11 @@ const Header = () => {
       <div className="wrapper flex items-center justify-between">
         <Link href="/" className="w-36 flex items-center">
           <Image
-            className="h-20 w-20"
+            className="h-16 w-16"
             src="/assets/images/Eventify-logo.png" width={128} height={38}
             alt="Eventify logo" 
           />
-          <p className="pl-4 text-4xl font-extrabold text-purple-800">Eventify</p>
+          <p className="pl-4 text-3xl font-extrabold text-purple-800">Eventify</p>
         </Link>
 
         <SignedIn>

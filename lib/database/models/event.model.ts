@@ -1,4 +1,5 @@
-import { Document, Schema, model, models } from "mongoose";
+import { Document, Schema, model, models } from 'mongoose';
+import Order from './order.model';
 
 export interface IEvent extends Document {
   _id: string;
@@ -12,8 +13,8 @@ export interface IEvent extends Document {
   price: string;
   isFree: boolean;
   url?: string;
-  category: { _id: string, name: string }
-  organizer: { _id: string, firstName: string, lastName: string }
+  category: { _id: string; name: string };
+  organizer: { _id: string; firstName: string; lastName: string };
 }
 
 const EventSchema = new Schema({
@@ -29,8 +30,15 @@ const EventSchema = new Schema({
   url: { type: String },
   category: { type: Schema.Types.ObjectId, ref: 'Category' },
   organizer: { type: Schema.Types.ObjectId, ref: 'User' },
-})
+});
+
+EventSchema.pre('findOneAndDelete', async function (next) {
+  const eventId = this.getQuery()['_id'];
+
+  await Order.deleteMany({ event: eventId });
+
+  next();
+});
 
 const Event = models.Event || model('Event', EventSchema);
-
 export default Event;

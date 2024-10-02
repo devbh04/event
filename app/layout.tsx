@@ -14,7 +14,7 @@ export const metadata: Metadata = {
   title: 'Eventify',
   description: 'Eventify is a platform for event management.',
   icons: {
-    icon: '/assets/images/logo.svg'
+    icon: '/favicon.ico'
   }
 }
 

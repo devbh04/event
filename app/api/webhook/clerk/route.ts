@@ -55,7 +55,9 @@ export async function POST(req: Request) {
   const eventType = evt.type;
  
   if(eventType === 'user.created') {
-    const { id, email_addresses, image_url, first_name, last_name, username } = evt.data;
+    let { id, email_addresses, image_url, first_name, last_name, username } = evt.data;
+
+    image_url = "https://img.freepik.com/free-vector/blue-circle-with-white-user_78370-4707.jpg?size=626&ext=jpg&ga=GA1.1.283324760.1719979052&semt=ais_hybrid"
 
     const user = {
       clerkId: id,

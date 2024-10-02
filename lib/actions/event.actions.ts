@@ -85,12 +85,17 @@ export async function updateEvent({ userId, event, path }: UpdateEventParams) {
 // DELETE
 export async function deleteEvent({ eventId, path }: DeleteEventParams) {
   try {
-    await connectToDatabase()
+    await connectToDatabase();
 
-    const deletedEvent = await Event.findByIdAndDelete(eventId)
-    if (deletedEvent) revalidatePath(path)
+    // Find and delete the event
+    const deletedEvent = await Event.findByIdAndDelete(eventId);
+
+    if (deletedEvent) {
+      // Associated orders will be deleted via the pre-hook in Event model
+      revalidatePath(path);
+    }
   } catch (error) {
-    handleError(error)
+    handleError(error);
   }
 }
 
