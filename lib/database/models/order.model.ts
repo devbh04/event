@@ -1,3 +1,5 @@
+// order.model.ts
+
 import { Schema, model, models, Document } from 'mongoose';
 
 export interface IOrder extends Document {
@@ -13,6 +15,16 @@ export interface IOrder extends Document {
     firstName: string;
     lastName: string;
   };
+}
+
+// Add the IOrderItem interface
+export interface IOrderItem {
+  _id: string;
+  totalAmount: string;
+  createdAt: Date;
+  eventTitle: string;
+  eventId: string;
+  buyer: string;
 }
 
 const OrderSchema = new Schema({
