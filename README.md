@@ -1,3 +1,6 @@
+## <a name="tech-stack">Website is deployed on</a>
+https://event-dusky.vercel.app/
+
 ## <a name="tech-stack">Tech Stack</a>
 
 - Node.js
